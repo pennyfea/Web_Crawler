@@ -1,0 +1,14 @@
+{
+  "name": "web_crawler",
+  "version": "1.0.0",
+  "description": "Web Crawler",
+  "main": "index.js",
+  "scripts": {
+    "sass": "node-sass -w scss/ -o dist/css/ --recursive"
+  },
+  "author": "Austin Pennyfeather",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^4.10.0"
+  }
+}
