@@ -8,6 +8,7 @@ import time
 import random
 import requests
 import os
+import json
 
 
 # Old implementation
@@ -69,6 +70,7 @@ def getTrendingQuotes(browser):
 
 
 def getStockDetails(url, browser):
+
     print(url)
     browser.get(url)
 
@@ -85,12 +87,30 @@ def getStockDetails(url, browser):
     print("Quote Volume: " + quote_volume)
     print("\n")
 
+    convertToJson(quote_name, quote_price, quote_volume, url)
+
+
+quotesArr = []
+
+
+def convertToJson(quote_name, quote_price, quote_volume, url):
+    quoteObject = {
+        "url": url,
+        "Name": quote_name,
+        "Price": quote_price,
+        "Volume": quote_volume
+    }
+    quotesArr.append(quoteObject)
+
 
 def trendingBot(url, browser):
     browser.get(url)
     trending = getTrendingQuotes(browser)
     for trend in trending:
         getStockDetails(trend, browser)
+    # requests finished, write json to file
+    with open('trendingQuoteData.json', 'w') as outfile:
+        json.dump(quotesArr, outfile)
 
 
 def Main():

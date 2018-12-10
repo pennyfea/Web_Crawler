@@ -1,0 +1,62 @@
+[
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=APHA&locale=EN",
+    "Volume": "Volume:\n11,577,843",
+    "Price": "$ 7.57",
+    "Name": "Aphria Inc."
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=ACB&locale=EN",
+    "Volume": "Volume:\n10,132,151",
+    "Price": "$ 7.65",
+    "Name": "Aurora Cannabis Inc."
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=WEED&locale=EN",
+    "Volume": "Volume:\n1,908,342",
+    "Price": "$ 41.98",
+    "Name": "Canopy Growth Corporation"
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=HEXO&locale=EN",
+    "Volume": "Volume:\n1,850,127",
+    "Price": "$ 5.11",
+    "Name": "HEXO Corp."
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=^TSX&locale=EN",
+    "Volume": "Volume:\n157,741,754",
+    "Price": "14,707.58",
+    "Name": "S&P/TSX Composite Index"
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=CRON&locale=EN",
+    "Volume": "Volume:\n2,609,724",
+    "Price": "$ 17.35",
+    "Name": "Cronos Group Inc."
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=BBD.B&locale=EN",
+    "Volume": "Volume:\n7,372,015",
+    "Price": "$ 2.14",
+    "Name": "Bombardier Inc. Class B Subordinate Voting Shares"
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=TGOD&locale=EN",
+    "Volume": "Volume:\n1,989,454",
+    "Price": "$ 3.08",
+    "Name": "The Green Organic Dutchman Holdings"
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=HVT&locale=EN",
+    "Volume": "Volume:\n284,735",
+    "Price": "$ 0.405",
+    "Name": "Harvest One Cannabis Inc."
+  },
+  {
+    "url": "https://web.tmxmoney.com/quote.php?qm_symbol=RNX&locale=EN",
+    "Volume": "Volume:\n852,880",
+    "Price": "$ 0.51",
+    "Name": "Royal Nickel Corporation"
+  }
+]
