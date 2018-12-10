@@ -3,6 +3,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup as soup
+from apscheduler.schedulers.background import BlockingScheduler
 from urllib2 import urlopen as uReq
 import time
 import random
@@ -92,6 +93,8 @@ def getStockDetails(url, browser):
 
 quotesArr = []
 
+# Convert to a JSON  file
+
 
 def convertToJson(quote_name, quote_price, quote_volume, url):
     quoteObject = {
@@ -114,21 +117,24 @@ def trendingBot(url, browser):
 
 
 def Main():
-
+    scheduler = BlockingScheduler()
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
     # applicable to windows os only
-    chrome_options.add_argument('--disable-gpu')
+    # chrome_options.add_argument('--disable-gpu')
 
     url = 'https://www.tmxmoney.com/en/index.html'
+    # browser = webdriver.Chrome(
+    #    r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
     browser = webdriver.Chrome(
-        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
+        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe")
     browser.get(url)
 
     os.system('cls')
     print("[+] Success! Bot Starting!")
-    trendingBot(url, browser)
-    # trendingBot(browser)
+    scheduler.add_job(trendingBot, 'interval', minutes=1, args=[url, browser])
+    scheduler.start()
+    #trendingBot(url, browser)
     browser.quit()
 
 
