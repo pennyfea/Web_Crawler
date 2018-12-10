@@ -1,12 +1,13 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup as soup
 from urllib2 import urlopen as uReq
 import time
 import random
 import requests
-
+import os
 
 
 # Old implementation
@@ -85,7 +86,6 @@ def getStockDetails(url, browser):
     print("\n")
 
 
-
 def trendingBot(url, browser):
     browser.get(url)
     trending = getTrendingQuotes(browser)
@@ -95,11 +95,17 @@ def trendingBot(url, browser):
 
 def Main():
 
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    # applicable to windows os only
+    chrome_options.add_argument('--disable-gpu')
+
     url = 'https://www.tmxmoney.com/en/index.html'
     browser = webdriver.Chrome(
-        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe")
+        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
     browser.get(url)
 
+    os.system('cls')
     print("[+] Success! Bot Starting!")
     trendingBot(url, browser)
     # trendingBot(browser)
