@@ -9,5 +9,24 @@
   </head>
   <body>
     <h1>Hello!</h1>
+    <ul id="quotes"></ul>
   </body>
+  <script>
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        // Typical action to be performed when the document is ready:
+        var response = JSON.parse(xhttp.responseText);
+        var output = " ";
+        for (var i = 0; i < response.length; i++) {
+          output += "<li>" + response[i].Name + ": " + response[i].Price;
+
+          ("</li>");
+        }
+        document.getElementById("quotes").innerHTML = output;
+      }
+    };
+    xhttp.open("GET", "trendingQuoteData.json", true);
+    xhttp.send();
+  </script>
 </html>

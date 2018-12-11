@@ -71,6 +71,26 @@ def getTrendingQuotes(browser):
     return [link.get_attribute('href') for link in all_trendingQuotes]
 
 
+def drop_duplicates(arr):
+    """ Appends the item to the returned array only if not
+        already present in our dummy array that serves as reference.
+    """
+    selected = []
+    urls = []
+    for item in arr:
+        if item['url'] not in urls:
+            selected.append(item)
+            urls.append(item['url'])
+
+    print("\n")
+    print(urls)
+    print("\n")
+    print(selected)
+    print("\n")
+
+    return selected
+
+
 def getStockDetails(url, browser):
 
     print(url)
@@ -93,11 +113,12 @@ def getStockDetails(url, browser):
 
 
 quotesArr = []
-
+newQuotesarr = []
 # Convert to a JSON  file
 
 
 def convertToJson(quote_name, quote_price, quote_volume, url):
+
     quoteObject = {
         "url": url,
         "Name": quote_name,
@@ -105,6 +126,7 @@ def convertToJson(quote_name, quote_price, quote_volume, url):
         "Volume": quote_volume
     }
     quotesArr.append(quoteObject)
+    # newQuotesarr.append(drop_duplicates(quotesArr))
 
 
 def trendingBot(url, browser):
@@ -133,10 +155,10 @@ def Main():
 
     os.system('cls')
     print("[+] Success! Bot Starting!")
-    scheduler.add_job(trendingBot, 'interval', hours=1,
+    scheduler.add_job(trendingBot, 'interval', minutes=1,
                       next_run_time=datetime.now(), args=[url, browser])
     scheduler.start()
-    #trendingBot(url, browser)
+    # trendingBot(url, browser)
     browser.quit()
 
 
