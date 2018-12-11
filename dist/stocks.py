@@ -10,6 +10,7 @@ import random
 import requests
 import os
 import json
+from datetime import datetime
 
 
 # Old implementation
@@ -119,20 +120,21 @@ def trendingBot(url, browser):
 def Main():
     scheduler = BlockingScheduler()
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--headless")
     # applicable to windows os only
-    # chrome_options.add_argument('--disable-gpu')
+    chrome_options.add_argument('--disable-gpu')
 
     url = 'https://www.tmxmoney.com/en/index.html'
-    # browser = webdriver.Chrome(
-    #    r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
     browser = webdriver.Chrome(
-        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe")
+        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
+    # browser = webdriver.Chrome(
+    #   r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe")
     browser.get(url)
 
     os.system('cls')
     print("[+] Success! Bot Starting!")
-    scheduler.add_job(trendingBot, 'interval', minutes=1, args=[url, browser])
+    scheduler.add_job(trendingBot, 'interval', hours=1,
+                      next_run_time=datetime.now(), args=[url, browser])
     scheduler.start()
     #trendingBot(url, browser)
     browser.quit()
