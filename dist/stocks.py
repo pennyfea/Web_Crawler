@@ -71,24 +71,24 @@ def getTrendingQuotes(browser):
     return [link.get_attribute('href') for link in all_trendingQuotes]
 
 
-def drop_duplicates(arr):
-    """ Appends the item to the returned array only if not
-        already present in our dummy array that serves as reference.
-    """
-    selected = []
-    urls = []
-    for item in arr:
-        if item['url'] not in urls:
-            selected.append(item)
-            urls.append(item['url'])
+# def drop_duplicates(arr):
+#     """ Appends the item to the returned array only if not
+#         already present in our dummy array that serves as reference.
+#     """
+#     selected = []
+#     urls = []
+#     for item in arr:
+#         if item['url'] not in urls:
+#             selected.append(item)
+#             urls.append(item['url'])
 
-    print("\n")
-    print(urls)
-    print("\n")
-    print(selected)
-    print("\n")
+#     print("\n")
+#     print(urls)
+#     print("\n")
+#     print(selected)
+#     print("\n")
 
-    return selected
+#     return selected
 
 
 def getStockDetails(url, browser):
@@ -113,7 +113,6 @@ def getStockDetails(url, browser):
 
 
 quotesArr = []
-newQuotesarr = []
 # Convert to a JSON  file
 
 
@@ -126,7 +125,6 @@ def convertToJson(quote_name, quote_price, quote_volume, url):
         "Volume": quote_volume
     }
     quotesArr.append(quoteObject)
-    # newQuotesarr.append(drop_duplicates(quotesArr))
 
 
 def trendingBot(url, browser):
@@ -135,8 +133,14 @@ def trendingBot(url, browser):
     for trend in trending:
         getStockDetails(trend, browser)
     # requests finished, write json to file
+
+    # REMOVE ANY DUPLICATE url from the list, then write json to file.
+
+    quotesArr_dict = {quote['url']: quote for quote in quotesArr}
+    newList = list(quotesArr_dict.values())
+
     with open('trendingQuoteData.json', 'w') as outfile:
-        json.dump(quotesArr, outfile)
+        json.dump(newList, outfile)
 
 
 def Main():
