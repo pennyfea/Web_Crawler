@@ -12,83 +12,15 @@ import os
 import json
 from datetime import datetime
 
-
-# Old implementation
-
-# def getTrendingQuotes(source_code):
-#     # grabs all the trending quotes for that day
-#     links = []
-#     page_soup = soup(source_code, "lxml")
-#     trendingQuotes = page_soup.findAll("div", {"id": "trendingQuotes"})
-#     all_trendingQuotes = trendingQuotes[0].findAll('a')
-#     for link in all_trendingQuotes:
-#         url = link.get('href')
-#         #name = link.text
-#         # print(name)
-#         links.append(url)
-#     return links
-
-
-# def getStockDetails(url, browser):
-#     print(url)
-#     source_code = browser.execute_script(
-#         "return document.documentElement.outerHTML")
-#     page_soup = soup(source_code, "html.parser")
-#     quote_wrapper = page_soup.findAll("div", {"class": "quote-wrapper"})
-
-#     for quote in quote_wrapper:
-
-#         qn = quote.find("div", {"class": "quote-name"})
-#         quote_name = qn.h2.text
-
-#         qp = quote.find("div", {"class": "quote-price"})
-#         quote_price = qp.span.text
-
-#         qv = quote.find("div", {"class": "quote-volume"})
-#         quote_volume = qv.span.br.string
-#         print("Quote Name: " + quote_name)
-#         print("Quote Price: " + quote_price)
-#         print("Quote Volume: " + quote_volume)
-
-
-# def trendingBot(browser):
-#     while True:
-#         source_code = browser.execute_script(
-#             "return document.documentElement.outerHTML")
-#         trending = getTrendingQuotes(source_code)
-#         for trend in trending:
-#             browser.get(trend)
-#             getStockDetails(trend, browser)
-#         break
-
-
 # grabs all the trending quotes for that day
+
+
 def getTrendingQuotes(browser):
     # wait until trending links appear, not really needed only for example
     all_trendingQuotes = WebDriverWait(browser, 10).until(
         lambda d: d.find_elements_by_css_selector('#trendingQuotes a')
     )
     return [link.get_attribute('href') for link in all_trendingQuotes]
-
-
-# def drop_duplicates(arr):
-#     """ Appends the item to the returned array only if not
-#         already present in our dummy array that serves as reference.
-#     """
-#     selected = []
-#     urls = []
-#     for item in arr:
-#         if item['url'] not in urls:
-#             selected.append(item)
-#             urls.append(item['url'])
-
-#     print("\n")
-#     print(urls)
-#     print("\n")
-#     print(selected)
-#     print("\n")
-
-#     return selected
 
 
 def getStockDetails(url, browser):
@@ -159,7 +91,7 @@ def Main():
 
     os.system('cls')
     print("[+] Success! Bot Starting!")
-    scheduler.add_job(trendingBot, 'interval', minutes=1,
+    scheduler.add_job(trendingBot, 'interval', hours=1,
                       next_run_time=datetime.now(), args=[url, browser])
     scheduler.start()
     # trendingBot(url, browser)
