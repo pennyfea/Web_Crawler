@@ -6,7 +6,7 @@ body {
   color: #000;
   height: 100%;
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
   line-height: 1.5; }
 
 main {
@@ -24,5 +24,11 @@ header {
   text-align: center;
   padding: 1rem;
   height: 60px;
+  font-size: 12px;
   background: #0a192f;
   color: #fff; }
+  #main-footer a {
+    color: #e6f1ff;
+    text-decoration: none; }
+    #main-footer a:hover {
+      color: #64ffda; }

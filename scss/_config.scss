@@ -1,0 +1,14 @@
+$primary-color: rgb(10, 25, 47);
+$seconday-color:rgb(100, 255, 218);
+$text-color: rgb(230, 241, 255);
+
+
+
+// Set text color
+@function set-text-color($color) {
+    @if (lightness($color) > 40) {
+      @return #000;
+    } @else {
+      @return #fff;
+    }
+}

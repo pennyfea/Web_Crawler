@@ -1,15 +1,48 @@
-$primary-color: black;
+@import "config";
+@import "menu";
 
-body {
-  background: $primary-color;
-  color: chartreuse;
+// Selects everything in css
+* {
+  box-sizing: border-box;
 }
 
+body {
+  background: white;
+  color: set-text-color($text-color);
+  height: 100%;
+  margin: 0;
+  font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono",
+    "Lucida Console", Monaco, monospace;
+  line-height: 1.5;
+}
 
-#main-footer{
+main {
+  padding: 4rem;
+  // creating a sticky footer
+  min-height: calc(100vh-60px);
+}
+
+header {
+  // position: fixed;
+  display: flex;
+  top: 0px;
+  width: 100%;
+  height: 100px;
+  background-color: $primary-color;
+}
+
+#main-footer {
   text-align: center;
   padding: 1rem;
   height: 60px;
-  background: rgba(lighten($primary-color, 3), 0.5);
+  font-size: 12px;
+  background: $primary-color;
   color: set-text-color($primary-color);
+  a {
+    color: $text-color;
+    text-decoration: none;
+    &:hover {
+      color: $seconday-color;
+    }
+  }
 }
