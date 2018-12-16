@@ -1,13 +1,22 @@
-// .menu-branding {
-// }
+.menu {
+  margin: 2rem;
+  float: right;
 
-// .menu {
-//   &-nav {
-//   }
+  &-nav {
+    margin: 0;
+    padding: 0;
+  }
 
-//   .nav-item {
-//   }
+  .nav-link {
+    text-decoration: none;
+    color: $text-color;
+    &:hover {
+      color: $seconday-color;
+    }
+  }
 
-//   .nav-link {
-//   }
-// }
+  .nav-item {
+    display: inline;
+    padding: 0 20px 0 20px;
+  }
+}
