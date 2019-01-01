@@ -4,10 +4,11 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup as soup
 from apscheduler.schedulers.background import BlockingScheduler
-from urllib2 import urlopen as uReq
+# from urllib import urlopen as uReq
+from urllib.request import urlopen as uReq
 import time
 import random
-import requests
+# import requests
 import os
 import json
 from datetime import datetime
@@ -84,7 +85,7 @@ def Main():
 
     url = 'https://www.tmxmoney.com/en/index.html'
     browser = webdriver.Chrome(
-        r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
+        r"C:\Users\HP\Desktop\chromedriver_win32\chromedriver.exe", chrome_options=chrome_options)
     # browser = webdriver.Chrome(
     #   r"C:\Users\austi\OneDrive\Desktop\chromeDriver\chromedriver_win32\chromedriver.exe")
     browser.get(url)
