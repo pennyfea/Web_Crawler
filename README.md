@@ -1,4 +1,4 @@
-# Web_Crawler application
+# Trending quuotes Web Crawler application
 This Web Crawler gathers all the trending quotes from the `https://www.tmxmoney.com/en/index.html`.
 The content will be updated every hour if any changes has occurred on said website.
 
